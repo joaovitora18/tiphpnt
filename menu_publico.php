@@ -1,7 +1,7 @@
 <?php 
     include "conn/connect.php";
     $lista_tipos = $conn -> query('select * from tbtipos order by rotulo_tipo;');
-    $rows_tipos = $lista_tipos -> fetch_all();
+    $row_tipos = $lista_tipos -> fetch_all();
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -46,8 +46,8 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <?php foreach($rows_tipos as $row){?>
-                            <li><a href="produtos_por_tipo.php?id_tipo=<?php echo $row[0] ?>"><?php echo $row[2] ?></a></li>
+                        <?php foreach($row_tipos as $row){?>
+                            <li><a href="produtos_por_tipo.php?id_tipo=<?php echo $row[0].'&rotulo'.$row[2] ?>"><?php echo $row[2] ?></a></li>
                         <?php };?>
                     </ul>
                 </li>
