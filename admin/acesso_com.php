@@ -12,9 +12,9 @@
         header('location: login.php');
         exit;
     }
-    $nome_da_sessão = session_name();
+    $nome_da_sessao = session_name();
     if(!isset($_SESSION['nome_da_sessao'])
-        or ($_SESSION['nome_da_sessao'] != $nome_da_sessão)
+        or ($_SESSION['nome_da_sessao'] != $nome_da_sessao)
     ){
         session_destroy();
         header('loacation: login.php');

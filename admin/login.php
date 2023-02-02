@@ -4,7 +4,7 @@
     if($_POST){
         $login = $_POST['login_usuario'];
         $senha = md5($_POST['senha_usuario']);
-        $loginRes = $conn->query("select * from tbusuarios where login_usuario = '$login' and senha_usuario = '$senha'");
+        $loginRes = $conn->query("select * from tbusuarios where login_usuario = '$login' and senha_usuario = '$senha';");
         $rowLogin = $loginRes->fetch_assoc();
         $numRow = mysqli_num_rows($loginRes);
         // se a sessão não existir

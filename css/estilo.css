@@ -7,6 +7,9 @@
     -webkit-background-size: cover ;
     background-size: cover;
 }
+.fundoconf {
+    background: rgb(252, 251, 235);
+}
 .fundo-menu{
     background-color: beige;
 }
