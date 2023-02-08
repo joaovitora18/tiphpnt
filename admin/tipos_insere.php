@@ -9,23 +9,20 @@
             $dir_img = "../images/".$nome_img;
             move_uploaded_file($tmp_img, $dir_img);
         }
-        $id_tipo = $_POST['id_tipo_produto'];
-        $destaque = $_POST['desataque_produto'];
-        $descri = $_POST['descri_produto'];
-        $resumo = $_POST['resumo_produto'];
-        $valor = $_POST['valor_produto'];
-        $imagem = $_FILES['imagem_produto']['name'];
-        $insereProd = "INSERT INTO tbprodutos
-                        (id_tipo_produto, destaque_produto, descri_produto, resumo_produto, valor_produto, imagem_produto)
+        $id_tipo = $_POST['id_tipo'];
+        $sigla = $_POST['sigla_tipo'];
+        $rotulo = $_POST['rotulo_tipo'];
+        $insereProd = "INSERT INTO tbtipos
+                        (id_tipo, , sigla_tipo, rotulo_tipo)
                         VALUES
-                        ('$id_tipo','$destaque','$descri','$resumo','$valor','$imagem');
+                        ('$id_tipo','$sigla','$rotulo');
                         ";
         $resultado = $conn->query($insereProd);
        
     } 
     // após a gravação bem sucedida do produto, volta (atualiza) lista
         if(mysqli_insert_id($conn)){
-            header('location: produtos_lista.php');
+            header('location: tipos_lista.php');
         }
         // selecionar os dados de chave estrangeira (lista de tipos de produtos)
         $consulta_fk = "select * from tbtipos order by rotulo_tipo asc";
@@ -48,30 +45,24 @@
         <div class="row">
             <div class="col-xs-12 col-sm-offset-2 col-sm-6 col-md-8">
                 <h2 class="breadcrumb text-danger">
-                    <a href="produtos_lista.php">
+                    <a href="tipos_lista.php">
                         <button class="btn btn-danger">
                             <span class="glyphicon glyphicon-chevron-left"></span>
                         </button>
                     </a>
-                    Inserindo Produtos
+                    Inserindo Tipos
                 </h2>
                 <div class="thumbnail">
                     <div class="alert alert-danger" role="alert">
-                        <form action="produtos_insere.php" method="post" name="form_produto_insere" enctype="multipart/form-data" id="form_produto_insere">
-                            <label for="id_tipo_produto">Tipo:</label>
+                        <form action="tipos_insere.php" method="post" name="form_tipo_insere" enctype="multipart/form-data" id="form_tipo_insere">
+                            <label for="id_tipo">Tipo:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
                                 </span>
-                                <select name="id_tipo_produto" id="id_tipo_produto" class="form-control" required>
-                                    <?php do {?>
-                                        <option value="<?php echo $row_fk['id_tipo']; ?>">
-                                                <?php echo $row_fk['rotulo_tipo'];?>
-                                        </option>
-                                    <?php }while($row_fk=$lista_fk->fetch_assoc());?>
-                                </select>
+                                <input type="text" name="rotulo_tipo" id="rotulo_tipo" class="form-control" placeholder="Digite o tipo" maxlength="100" required>
                             </div>
-                            <label for="destaque_produto">Destaque:</label>
+                            <label for="sigla_tipo">sigla:</label>
                             <div class="input-group">
                                 <label for="destaque_produto_s" class="radio-inline">
                                     <input type="radio" name="destaque_produto" id="destaque_produto" value="Sim">Sim
