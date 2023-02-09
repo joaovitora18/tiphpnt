@@ -3,32 +3,21 @@
     include '../conn/connect.php';
 
     if($_POST){
-        if(isset($_POST['enviar'])){
-            $nome_img = $_FILES['imagem_produto']['name'];
-            $tmp_img = $_FILES['imagem_produto']['tmb_name'];
-            $dir_img = "../images/".$nome_img;
-            move_uploaded_file($tmp_img, $dir_img);
-        }
         $id_tipo = $_POST['id_tipo'];
         $sigla = $_POST['sigla_tipo'];
         $rotulo = $_POST['rotulo_tipo'];
-        $insereProd = "INSERT INTO tbtipos
-                        (id_tipo, , sigla_tipo, rotulo_tipo)
+        $insereTipos = "INSERT INTO tbtipos
+                        (id_tipo, sigla_tipo, rotulo_tipo)
                         VALUES
                         ('$id_tipo','$sigla','$rotulo');
                         ";
-        $resultado = $conn->query($insereProd);
+        $resultado = $conn->query($insereTipos);
        
     } 
     // após a gravação bem sucedida do produto, volta (atualiza) lista
         if(mysqli_insert_id($conn)){
             header('location: tipos_lista.php');
         }
-        // selecionar os dados de chave estrangeira (lista de tipos de produtos)
-        $consulta_fk = "select * from tbtipos order by rotulo_tipo asc";
-        $lista_fk = $conn->query($consulta_fk);
-        $row_fk = $lista_fk->fetch_assoc();
-        $nlinhas = $lista_fk->num_rows;
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -55,50 +44,19 @@
                 <div class="thumbnail">
                     <div class="alert alert-danger" role="alert">
                         <form action="tipos_insere.php" method="post" name="form_tipo_insere" enctype="multipart/form-data" id="form_tipo_insere">
+                        <label for="sigla_tipo">sigla:</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
+                                </span>
+                                <input type="text" name="sigla_tipo" id="sigla_tipo" class="form-control" placeholder="Digite a sigla" maxlength="100" required>
+                            </div>
                             <label for="id_tipo">Tipo:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
                                 </span>
                                 <input type="text" name="rotulo_tipo" id="rotulo_tipo" class="form-control" placeholder="Digite o tipo" maxlength="100" required>
-                            </div>
-                            <label for="sigla_tipo">sigla:</label>
-                            <div class="input-group">
-                                <label for="destaque_produto_s" class="radio-inline">
-                                    <input type="radio" name="destaque_produto" id="destaque_produto" value="Sim">Sim
-                                </label>
-                                <label for="destaque_produto_n" class="radio-inline">
-                                    <input type="radio" name="destaque_produto" id="destaque_produto" value="Não" checked>Não
-                                </label>
-                            </div>
-                            <label for="descri_produto">Descrição:</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>
-                                </span>
-                                <input type="text" name="descri_produto" id="descri_produto" class="form-control" placeholder="Digite a descrição do Produto" maxlength="100" required>
-                            </div>
-                            <label for="resumo_produto">Resumo:</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
-                                </span>
-                                <textarea name="resumo_produto" id="resumo_produto" cols="30" rows="8" class="form-control" placeholder="Digite o resumo do Produto" maxlength="100" required></textarea>
-                            </div>
-                            <label for="valor_produto">Valor:</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
-                                </span>
-                                <input type="number" name="valor_produto" id="valor_produto" class="form-control" required min="0" step="0,01">
-                            </div>
-                            <label for="imagem_produto">Imagem:</label>
-                            <div class="input-group">
-                            <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
-                                </span>
-                                <img src="" name="imagem" id="imagem" alt="" class="img-responsive">
-                                <input type="file" name="imagem_produto" id="imagem_produto" class="form-control" accept="image/*">
                             </div>
                             <hr>
                             <input type="submit" id="enviar" name="enviar" value="Cadastrar" class="btn btn-danger btn-block">
@@ -108,34 +66,5 @@
             </div>
         </div>
     </main>
-
-<!-- script para imagem -->
-<script>
-    document.getElementById("imagem_produto").onchange = function(){
-        var reader = new FileReader();
-        if(this.files[0].size>1024000){
-            alert("A imagem deve ter no maximo 1MB");
-            $("#imagem").attr("src","blank");
-            $("#imagem").hide();
-            $("#imagem_produto").wrap('<form>').closest('form').get(0).reset();
-            $("#imagem_produto").unwrap();
-            return false
-        }
-        if(this.files[0].type.indexOf("image")==-1){
-            alert("formato inválido, escolha uma imagem");
-            $("#imagem").attr("src","blank");
-            $("#imagem").hide();
-            $("#imagem_produto").wrap('<form>').closest('form').get(0).reset();
-            $("#imagem_produto").unwrap();
-            return false
-        }
-        reader.onload = function(e){
-            document.getElementById("imagem").src = e.target.result
-            $("#imagem").show();
-        }
-        reader.readAsDataURL(this.files[0]);
-    }
-</script>
-
 </body>
 </html>

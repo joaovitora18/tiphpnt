@@ -1,9 +1,10 @@
 <?php 
 include 'acesso_com.php';
 include '../conn/connect.php';
-$lista = $conn->query("select * from tbtipos;");
+$lista = $conn->query("select * from tbtipos order by id_tipo desc");
 $row = $lista->fetch_assoc();
 $rows = $lista->num_rows;
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -48,7 +49,7 @@ $rows = $lista->num_rows;
                             <?php echo $row['sigla_tipo'];?>
                         </td>
                         <td >
-                            <a href="tipos_atualiza.php?id_produto=<?php echo $row['id_tipo'] ?>" role="button" class="btn btn-warning btn-block btn-xs"> 
+                            <a href="tipos_atualiza.php?id_tipo=<?php echo $row['id_tipo'] ?>" role="button" class="btn btn-warning btn-block btn-xs"> 
                                 <span class="glyphicon glyphicon-refresh"></span>
                                 <span class="hidden-xs">ALTERAR</span>                              
                             </a>
