@@ -2,7 +2,7 @@
 <?php 
 include 'acesso_com.php';
 include '../conn/connect.php';
-$lista = $conn->query("select * from tbusuarios order by id_usuario desc");
+$lista = $conn->query("select * from tbusuarios order by nivel_usuario desc");
 $row = $lista->fetch_assoc();
 $rows = $lista->num_rows;
 

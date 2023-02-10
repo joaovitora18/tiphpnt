@@ -7,16 +7,18 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" href="css/bootstrap.min.css">
       <link rel="stylesheet" href="css/estilo.css">
-      <title>Chuleta Quente Churrascaria</title>
+      <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
+      <title>Steak Brasa</title>
   </head>
   <body class="fundofixo">
 
     <!-- area de menu -->
     <?php include 'menu_publico.php'; ?>
     <a name="home">&nbsp;</a>
+            <!-- area de carousel -->
+            <?php include 'carousel.php';?>
     <main class="container">
-        <!-- area de carousel -->
-        <?php include 'carousel.php';?>
+
         <!-- area de destaque -->
         <a name="destaques">&nbsp;</a>
         <?php include 'produtos_destaque.php';?>

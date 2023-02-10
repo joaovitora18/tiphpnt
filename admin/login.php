@@ -17,7 +17,7 @@
             $_SESSION['login_usuario'] = $login;
             $_SESSION['nivel_usuario'] = $rowLogin['nivel_usuario'];
             $_SESSION['nome_da_sessao'] = session_name();
-            if($rowLogin['nivel_usuario']=='sup'){
+            if($rowLogin['nivel_usuario']=='supervisor'){
                 echo "<script> window.open('index.php','_self')</script>";
             }else{
                 echo "<script> window.open('../cliente/index.php?cliente=".$login."','_self')</script>";

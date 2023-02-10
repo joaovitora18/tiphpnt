@@ -6,12 +6,12 @@ if ($_POST) {
 
     $id_usuario = $_POST['id_usuario'];
     $login_usuario = $_POST['login_usuario'];
-    $nivel_usario = $_POST['nivel_usuario'];
+    $nivel_usuario = $_POST['nivel_usuario'];
 
 
     $id = $_POST['id_usuario'];
 
-    $updateSql = "update tbtipos
+    $updateSql = "update tbusuarios
                     set id_usuario = '$id_usuario', 
                     login_usuario = '$login_usuario', 
                     nivel_usuario = '$nivel_usuario'
@@ -62,36 +62,36 @@ $numRows = $lista->num_rows;
                         <form action="usuarios_atualiza.php" method="post" name="form_usuario_atualiza" enctype="multipart/form-data" id="form_usuario_atualiza">
                             <input type="hidden" name="id_usuario" id="id_usuario" value="<?php echo $row['id_usuario']; ?>">
                     
-                            <label for="login_usuario">login:</label>
+                            <label for="login_usuario">Login:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
                                 </span>
                                 
-                                <input type="text" name="login_usuario" id="login_usuario" class="form-control" placeholder="Digite a login do usuario" maxlength="100" value="<?php echo $row['login_usuario'] ?>">
+                                <input type="text" name="login_usuario" id="login_usuario" class="form-control" placeholder="Digite o login do usuario" maxlength="100" value="<?php echo $row['login_usuario'] ?>">
                             </div>
 
-                            <label for="nivel_usuario">Nivel:</label>
+                            <label for="nivel_usuario">nivel:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
                                 </span>
-                                <select name="nivel_usuario" id="nivel_usuario" class="form-control" required >
+                                <select name="nivel_usuario" id="nivel_usuario" class="form-control" required>
                                     
-                                        <option value="supervisor">
-                                            supervisor
-                                        </option>
-                                        <option value="comum">
-                                            comum
-                                        </option>
-                                        <option value="atendente">
-                                            atendente
-                                        </option>
-                                        <option value="vendedor">
-                                            vendedor
-                                        </option>
-                                    
-                                </select>
+                                    <option value="supervisor">
+                                        supervisor
+                                    </option>
+                                    <option value="comum">
+                                        comum
+                                    </option>
+                                    <option value="atendente">
+                                        atendente
+                                    </option>
+                                    <option value="vendedor">
+                                        vendedor
+                                    </option>
+                                
+                            </select>
                             </div>
 
 

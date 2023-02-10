@@ -25,7 +25,7 @@
             <span class="icon-bar"></span>
         </button>
         <a href="index.php" class="navbar-brand">
-            <img src="../imagens/logochurrascopequeno.png" alt="">
+            <img src="../images/logo-brasastor-adm.png" alt="">
         </a>
     </div>
     <!-- Fecha Agrupamento para exibição Mobile -->
