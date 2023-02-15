@@ -23,6 +23,7 @@
                 <img src="images/banner-3.png" alt="" class="center-block">
             </div>
         </div>
+        
         <!-- <a href="#banners" class="left carousel-control" role="button" data-side="prev">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             <span class="sr-only">Anterior</span>

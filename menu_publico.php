@@ -39,6 +39,8 @@
                 </li>
                 <li><a href="index.php#destaques">DESTAQUES</a></li>
                 <li><a href="index.php#produtos">PRODUTOS</a></li>
+                <li class=" bg-danger"><a href="reserva_leis.php">FAÇA SUA RESERVA</a></li>
+                <li><a href=""></a></li>
                 <!-- dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">

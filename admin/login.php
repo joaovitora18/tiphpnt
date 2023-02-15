@@ -38,12 +38,12 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/2495680ceb.js" crossorigin="anonymous"></script>
     <!-- Link para CSS específico -->
-    <link rel="stylesheet" href="../css/meu_estilo.css" type="text/css">
+    <link rel="stylesheet" href="../css/estilo.css" type="text/css">
     
     <title>Chuleta Quente - Login</title>
 </head>
 
-<body>
+<body class="fundofixo">
     <main class="container">
         <section>
             <article>
@@ -72,7 +72,9 @@
                                         <input type="password" name="senha_usuario" id="senha_usuario" class="form-control" required autocomplete="off" placeholder="Digite sua senha.">
                                     </p>
                                     <p class="text-right">
+                                    <a href="../login_comum.php">Registre-se</a>
                                         <input type="submit" value="Entrar" class="btn btn-primary">
+                                        <!-- <br> -->
                                     </p>
                                 </form>
                                 <p class="text-center">

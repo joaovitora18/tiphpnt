@@ -17,8 +17,9 @@
     <a name="home">&nbsp;</a>
             <!-- area de carousel -->
             <?php include 'carousel.php';?>
+            
     <main class="container">
-
+    <a href="reserva_leis.php"><img width="100%" style="margin-bottom: -30px; margin-top: 15px;" src="images/promo.png" alt=""></a>
         <!-- area de destaque -->
         <a name="destaques">&nbsp;</a>
         <?php include 'produtos_destaque.php';?>
