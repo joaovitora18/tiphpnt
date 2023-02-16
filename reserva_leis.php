@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../css/estilo.css">
     <title>Document</title>
 </head>
-<body>
+<body class="fundofixo">
     <?php include "menu_publico.php"?>
     <main class="container">    
         <div class="row">
