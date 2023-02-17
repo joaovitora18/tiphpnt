@@ -7,10 +7,12 @@
         $cpf = $_POST['cpf'];
         $email = $_POST['email'];
         $data = $_POST['data'];
+        $status = $_POST['status'];
+        $
         $insereReserva = "INSERT INTO reserva
-                        (id, nome, cpf, email, data)
+                        (id, nome, cpf, email, data, status, dataex )
                         VALUES
-                        ('$id','$nome', '$cpf', '$email', '$data');                        
+                        ('$id','$nome', '$cpf', '$email', '$data', '$status', '$dataex');                        
                         ";
         $resultado = $conn->query($insereReserva);
     }
