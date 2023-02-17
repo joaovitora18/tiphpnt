@@ -46,15 +46,15 @@ DROP TABLE IF EXISTS `reserva`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `reserva` (
-  `idreserva` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
   `cpf` varchar(11) NOT NULL,
   `email` varchar(45) NOT NULL,
-  `data` datetime NOT NULL,
-  `status` binary(1) NOT NULL,
+  `data` date NOT NULL,
+  `status` enum('concluida','recusada','andamento') NOT NULL DEFAULT 'andamento',
   `dataex` datetime DEFAULT NULL,
-  PRIMARY KEY (`idreserva`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,6 +63,7 @@ CREATE TABLE `reserva` (
 
 LOCK TABLES `reserva` WRITE;
 /*!40000 ALTER TABLE `reserva` DISABLE KEYS */;
+INSERT INTO `reserva` VALUES (1,'Faustão','46598712165','asdf@gmail.com','0000-00-00','recusada',NULL),(2,'Fastão','46598712865','as9f@gmail.com','2023-12-15','recusada',NULL),(3,'Fastinho','46598712885','a89f@gmail.com','2023-12-14','recusada',NULL);
 /*!40000 ALTER TABLE `reserva` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -198,4 +199,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-16 17:24:20
+-- Dump completed on 2023-02-17 16:54:55
