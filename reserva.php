@@ -8,11 +8,12 @@
         $email = $_POST['email'];
         $data = $_POST['data'];
         $status = $_POST['status'];
-        $
+        $dataex = $_POST['dataex'];
+        $mesa = $_POST['mesa'];
         $insereReserva = "INSERT INTO reserva
-                        (id, nome, cpf, email, data, status, dataex )
+                        (id, nome, cpf, email, data, status, dataex, mesa)
                         VALUES
-                        ('$id','$nome', '$cpf', '$email', '$data', '$status', '$dataex');                        
+                        ('$id','$nome', '$cpf', '$email', '$data', '$status', '$dataex','$mesa');                        
                         ";
         $resultado = $conn->query($insereReserva);
     }
@@ -75,6 +76,7 @@
                             </div>
                             
                             <hr>
+                            
                             <input type="submit" id="enviar" name="enviar" value="Cadastrar" class="btn btn-danger btn-block">
                         </form>
                     </div>

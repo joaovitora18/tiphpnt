@@ -6,9 +6,6 @@ $row = $lista->fetch_assoc();
 $rows = $lista->num_rows;
 
 
-
-
-
 if(isset($_GET['id'])){
    $lista = $conn->query("update reserva set status = 'recusada' where id = ".$_GET['id'].";");
    header('location: reservas_lista.php');
@@ -33,6 +30,7 @@ if(isset($_GET['id'])){
                 <th>NOME</th>
                 <th>DATA</th>
                 <th>STATUS</th>
+                <th>MESA</th>
                 <th>MODIFICAR</th>
             </thead>
             
@@ -52,11 +50,30 @@ if(isset($_GET['id'])){
                         <td>
                             <?php echo $row['data'];?>
                         </td>
-                           <td class="<?php echo $row['status'] == 'recusada'? 'text-danger' : '';?>"><?php echo $row['status']; ?> </td>
+                        
+                           <td class="<?php echo $row['status'] == 'recusada'? 'text-danger' : '';?>">
+                           <?php if($row['status'] != ''){ 
+                                echo $row['status'];
+                            }else{
+                                echo 'em andamento';
+                            };
+                            
+                            ?>
+                            </td>
+                           <td>
+                            <?php if($row['mesa'] != ''){ 
+                                echo $row['mesa'];
+                            }else{
+                                echo '-';
+                            };
+                            
+                            ?>
+                           </td>
                         <td >
                             <a href="reservas_lista.php?id=<?php echo $row['id'];?>" role="button" class="btn btn-warning btn-block btn-xs"> 
                                 <span class="glyphicon glyphicon-refresh"></span>
-                                <span class="hidden-xs">NEGAR</span>                              
+                                <span class="hidden-xs">NEGAR</span> 
+                                                            
                             </a>
                             <a href="concluido.php?id=<?php echo $row['id'];?>" role="button" class="btn btn-warning btn-block btn-xs"> 
                                 <span class="glyphicon glyphicon-refresh"></span>
