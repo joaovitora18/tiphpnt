@@ -58,7 +58,7 @@ $numRows = $lista->num_rows;
                         
                             <label for="mesa">Mesa:</label>
                             <div class="input-group">
-                            <input type="text" name="mesa" id="mesa" class="form-control" placeholder="Digite a mesa vinculada" maxlength="100" value="<?php echo $row['mesa'] ?>">
+                            <input type="text" name="mesa" id="mesa" class="form-control" placeholder="Digite a mesa vinculada" maxlength="100" value="<?php if($row['mesa'] = ''){ echo $row['mesa'];}else{echo '-';};?>">
                             </div>
                             
                             <hr>
