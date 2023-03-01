@@ -17,9 +17,25 @@
                         ";
         $resultado = $conn->query($insereReserva);
     }
+    if($_POST){
+        
+    }
+
+
         if(mysqli_insert_id($conn)){
             header('location: index.php');
         }
+
+$min = new DateTime();
+$max = new DateTime();
+
+
+$min->add(new DateInterval('P2D'));
+$max->add(new DateInterval('P90D'));
+
+$minDate = $min->format('Y-m-d');
+$maxDate = $max->format('Y-m-d');
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -72,7 +88,7 @@
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
                                 </span>
-                                <input type="date" name="data" id="data" class="form-control" placeholder="Digite a senha" maxlength="100" required>
+                                <input type="date" name="data" id="data" class="form-control" placeholder="Digite a senha" maxlength="100" min="<?php echo $minDate;?>" max="<?php echo $maxDate;?>"  required>
                             </div>
                             
                             <hr>

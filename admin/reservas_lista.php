@@ -10,6 +10,7 @@ if(isset($_GET['id'])){
    $lista = $conn->query("update reserva set status = 'recusada' where id = ".$_GET['id'].";");
    header('location: reservas_lista.php');
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -78,6 +79,11 @@ if(isset($_GET['id'])){
                             <a href="concluido.php?id=<?php echo $row['id'];?>" role="button" class="btn btn-warning btn-block btn-xs"> 
                                 <span class="glyphicon glyphicon-refresh"></span>
                                 <span class="hidden-xs">CONCLUIR</span>                              
+                                                    
+                            </a>
+                            <a href="informacao.php?id=<?php echo $row['id'];?>" role="button" class="btn btn-warning btn-block btn-xs"> 
+                                <span class="glyphicon glyphicon-refresh"></span>
+                                <span class="hidden-xs">INFORMAÇÕES</span>                              
                                                     
                             </a>
 

@@ -27,7 +27,7 @@
                 </p>
                     <div class="alert alert-info" role="alert">
                         <form action="reserva.php">
-                        <input type="checkbox" required> concordo as regras descritas                    
+                        <input type="checkbox" id="termos" required>&nbsp;<label for="termos"> Concordo as regras descritas </label>                   
                         <hr>
                         <div class="text-right">
                         <a type="submit" href="reserva.php"><button class="btn btn-success">continue</button></a>  
